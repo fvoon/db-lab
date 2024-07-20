@@ -4,26 +4,30 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.UuidGenerator;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@DynamicUpdate
 public class BankTransfer {
     @Id
     private String id;
 
     private String reference;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Account sender;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Account receiver;
 
     @Embedded
     private Amount amount;
+
+    @Version
+    private Long version;
 
     @Enumerated(EnumType.STRING)
     private State state;
@@ -40,6 +44,7 @@ public class BankTransfer {
                 sender,
                 receiver,
                 amount,
+                null,
                 State.CREATED
         );
     }

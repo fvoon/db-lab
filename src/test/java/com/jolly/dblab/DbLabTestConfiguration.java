@@ -40,7 +40,7 @@ public class DbLabTestConfiguration {
             for (int i = 0; i < 50; i++) {
                 Account account = accountRepository.save(new Account(
                         UUID.randomUUID().toString(), "iban2", "John", "Doe", new HashSet<>()));
-                BankTransfer bankTransfer = BankTransfer.create(UUID.randomUUID().toString(), "reference", sender,
+                BankTransfer bankTransfer = BankTransfer.create(UUID.randomUUID().toString(), "reference", persistedSender,
                         account, Amount.of(100, "USD"));
                 bankTransferRepository.save(bankTransfer);
             }

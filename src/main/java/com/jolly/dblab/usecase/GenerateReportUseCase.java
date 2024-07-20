@@ -17,7 +17,7 @@ public class GenerateReportUseCase {
     public void execute(String senderId) {
         List<BankTransfer> entries = bankTransferRepository.findBySenderId(senderId);
 
-        entries.stream()
-                .peek(entry -> System.out.println(entry.getReceiver().getIban()));
+        for (BankTransfer entry : entries)
+            System.out.println(entry.getReceiver().getIban());
     }
 }

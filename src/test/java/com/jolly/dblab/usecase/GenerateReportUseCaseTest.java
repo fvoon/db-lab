@@ -13,6 +13,6 @@ class GenerateReportUseCaseTest {
 
     @Test
     void execute() {
-        useCase.execute("sender_id");
+        useCase.execute("sender-id");
     }
 }
