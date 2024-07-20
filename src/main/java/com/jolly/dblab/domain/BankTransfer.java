@@ -12,7 +12,6 @@ import org.hibernate.annotations.UuidGenerator;
 @Getter
 public class BankTransfer {
     @Id
-    @UuidGenerator
     private String id;
 
     private String reference;

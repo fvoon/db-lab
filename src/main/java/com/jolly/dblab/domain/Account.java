@@ -15,7 +15,6 @@ import java.util.Set;
 @Getter
 public class Account {
     @Id
-    @UuidGenerator
     private String id;
 
     private String iban;
